@@ -17,3 +17,12 @@ build/
 # Data and Logs
 *.log
 data/
+
+# Mac specific
+.DS_Store
+
+# Windows specific
+Thumbs.db
+
+# Environment variables 
+.env
