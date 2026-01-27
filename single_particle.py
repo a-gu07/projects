@@ -5,12 +5,12 @@ DT = 0.01
 G_ACCEL = np.array([0, -9.81])
 """ A program to model projectile motion of a single particle. Uses g = -9.81 and F_drag = -kv^2. Each time step is 0.01 s"""
 
-def update_particle(pos, vel, drag_coeff, mass):
-    speed = np.linalg.norm(vel)
+def update_particle(pos, vel, drag_coeff, mass, dt, g_accel):
+    speed = np.linalg.norm(vel, axis=(vel.ndim -1), keepdims = True)
     drag = -drag_coeff*speed*vel
-    accel =  G_ACCEL + drag/mass
-    v_new = vel + accel*DT
-    p_new = pos + v_new*DT
+    accel =  g_accel + drag/mass
+    v_new = vel + accel*dt
+    p_new = pos + v_new*dt
     return p_new, v_new
 
 def get_input():
@@ -36,7 +36,7 @@ def main():
     x_path = [pos[0]]
     y_path = [pos[1]]
     while(len(y_path) == 1 or pos[1]>=0):
-        pos,vel = update_particle(pos, vel, k, m)
+        pos,vel = update_particle(pos, vel, k, m, DT, G_ACCEL)
         x_path.append(pos[0])
         y_path.append(pos[1])
         first = False
