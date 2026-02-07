@@ -30,7 +30,7 @@ def main():
         plt.plot(x_vals, y_vals, color=colors[i], alpha=0.5)
     plt.grid(True)
     plt.title("100 Particles!")
-    plt.xlabel("Height (m)")
+    plt.xlabel("Distance (m)")
     plt.ylabel("Height (m)")
     plt.axhline(0, color='black', lw=2) 
     plt.show()
