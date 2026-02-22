@@ -1,5 +1,9 @@
 import sys
 import numpy as np
+"""
+A program to simulate many runs of the Monty Hall gameshow question. Here, we always swap doors, and 
+the final number of successes and success rate are reported. Clearly, probability works!
+"""
 
 def main():
     if len(sys.argv)<2:
@@ -14,6 +18,7 @@ def main():
     picked = doors[np.arange(rounds), initial_pick] 
     wins = np.sum(picked==0)
     print(f"Out of {rounds} swaps, the prize was found {wins} times. ")
+    print(f"Swapping gives a {float(wins)*100/rounds}% success rate.")
 
 #be warry of trying any number of rounds > 100000000(8 zeros), it may not run 
 if __name__ == "__main__":

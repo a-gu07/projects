@@ -1,9 +1,13 @@
 import numpy as np
 import matplotlib.pyplot as plt
 
+""" 
+A kinematics simulator for launching a single particle. The drag coefficient, mass, inital velocity, and launch angle 
+can be chosen by the user. A timestep of 0.01s and a gravitational acceleration of g = -9.81 m/s^2 is used.
+"""
+
 DT = 0.01
 G_ACCEL = np.array([0, -9.81])
-""" A program to model projectile motion of a single particle. Uses g = -9.81 and F_drag = -kv^2. Each time step is 0.01 s"""
 
 def update_particle(pos, vel, drag_coeff, mass, dt, g_accel):
     speed = np.linalg.norm(vel, axis=(vel.ndim -1), keepdims = True)
