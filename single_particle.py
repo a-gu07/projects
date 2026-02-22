@@ -11,6 +11,7 @@ G_ACCEL = np.array([0, -9.81])
 
 def update_particle(pos, vel, drag_coeff, mass, dt, g_accel):
     speed = np.linalg.norm(vel, axis=(vel.ndim -1), keepdims = True)
+    # magnitude of drag is kv^2, direction is '-vel'
     drag = -drag_coeff*speed*vel
     accel =  g_accel + drag/mass
     v_new = vel + accel*dt

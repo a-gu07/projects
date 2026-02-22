@@ -13,6 +13,7 @@ def main():
     rng = np.random.default_rng()
     pos = np.zeros((100,2))
     vel = np.zeros((100,2))
+    # generates thetas, v0 to be distributed around 45 and 50
     thetas = 45 + 12*rng.standard_normal(100)
     v0 = 50 + 5*rng.standard_normal(100)
     vel[:, 0] = v0*np.cos(np.radians(thetas))
@@ -22,11 +23,14 @@ def main():
         mask = np.linalg.norm(vel, axis =1) > 0
         pos[mask], vel[mask] = update_particle(pos[mask], vel[mask], 0.1, 1, DT, G_ACCEL)
         landed = mask & (pos[:, 1] < 0)
+        # set all particles on ground to stop moving, so we can eventually finish the program
         pos[landed,1] = 0
         vel[landed] = 0
+        # stores the position matrix at every interval dt
         history.append(pos.copy())
     history = np.array(history)
     plt.figure(figsize=(10, 5))
+    # generates an array of 100 colors from 'viridis'
     colors = plt.cm.viridis(np.linspace(0, 1, 100)) 
     for i in range(100):
         x_vals = history[:, i, 0]
