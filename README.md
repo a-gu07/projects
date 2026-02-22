@@ -1,5 +1,4 @@
-# practice
-Practice run to learn a few things:
-github
-virtual env
-numpy, matplotlib
+# random_projects
+
+A collection of some short python programs I've written
+Trying to learn numpy, matplotlib

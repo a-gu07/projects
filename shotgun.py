@@ -1,6 +1,10 @@
 import numpy as np
 import matplotlib.pyplot as plt
 from single_particle import update_particle
+"""
+A kinematics simulator to model the launch of 100 particles at once from the same initial position(like a shotgun!).
+Launch angles and initial velocities are distributed around 45 and 50, respectively. Standard SI units are used.
+"""
 
 DT = 0.01
 G_ACCEL = np.array([0, -9.81])
