@@ -7,15 +7,17 @@ the final number of successes and success rate are reported. Clearly, probabilit
 
 def main():
     if len(sys.argv)<2:
-        print(f"Usage: {sys.argv[0]} arg1")
+        print(f"Usage: {sys.argv[0]} #number_of_rounds")
         sys.exit(1)
     rounds = int(sys.argv[1])
     rng = np.random.default_rng()
     doors = np.zeros((rounds, 3))
+    # generates an array of shape (rounds, ) that contains ints between 1 and 2 inclusive
     prize_indexes = rng.integers(low = 0, high = 2, size = rounds, endpoint = True)
     doors[np.arange(rounds), prize_indexes] = 1
     initial_pick = rng.integers(low=0, high=2, size=rounds,endpoint=True)
     picked = doors[np.arange(rounds), initial_pick] 
+    # if you choose a door without a prize, you always swap into the prize door!!
     wins = np.sum(picked==0)
     print(f"Out of {rounds} swaps, the prize was found {wins} times. ")
     print(f"Swapping gives a {float(wins)*100/rounds}% success rate.")
