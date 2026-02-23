@@ -44,7 +44,6 @@ def main():
         pos,vel = update_particle(pos, vel, k, m, DT, G_ACCEL)
         x_path.append(pos[0])
         y_path.append(pos[1])
-        first = False
 
     plt.figure(figsize=(10, 5))
     plt.plot(x_path, y_path, label=f"Angle: {theta_deg}°, k={k}")
